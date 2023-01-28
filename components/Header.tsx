@@ -21,14 +21,11 @@ function Header() {
         }
     },[])
     
-
     return (
-        <header className={`${isScrolled && "bg-[#141414]"}`}>
+        <header className={`${isScrolled && "bg-[#141414]"} transition duration-200`}>
             {/* Left Section */}
             <div className='flex items-center space-x-2 md:space-x-10'>
-                {/* Logo svg */}
                 <Logo />
-
                 <ul className='hidden space-x-4 md:flex'>
                     <li className='headerLink'>Home</li>
                     <li className='headerLink'>TV Shows</li>
@@ -37,7 +34,6 @@ function Header() {
                     <li className='headerLink'>My List</li>
                 </ul>
             </div>
-
             {/* Right Section */}
             <div className='flex items-center space-x-4 text-sm font-light'>
                 <HiSearch className='hidden sm:inline h-6 w-6'/>
@@ -47,8 +43,6 @@ function Header() {
                     <img src="./defaultAvatar.png" alt=""/>
                 </Link>
             </div>
-
-
         </header>
     )
 }
