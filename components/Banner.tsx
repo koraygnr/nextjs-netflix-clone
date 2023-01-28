@@ -12,19 +12,20 @@ interface IProps {
 
 function Banner({ netflixOriginals }: IProps) {
   const [movie, setMovie] = useState<Movie | null>(null)
-
+  
   useEffect(() => {
     setMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)])
   }, [netflixOriginals])
    
   return (
     <div className='flex flex-col space-y-4 py-16 transition-all lg:h-[65vh] lg:justify-end lg:pb-12'>
-      <div className='absolute top-0 left-0 h-[95vh] w-screen -z-10'>
+      <div className='absolute top-0 left-0 h-[95vh] w-full -z-10'>
         <Image
-          src={`${baseUrl}${movie?.backdrop_path || movie?.poster_path}`}
+          src={`${baseUrl}/original${movie?.backdrop_path || movie?.poster_path}`}
+          className='object-cover'
           alt="banner"
           fill
-          className='object-cover'
+          priority
         />
       </div>
 
