@@ -3,9 +3,12 @@ import Logo from '@/assets/Logo'
 import { HiSearch } from "react-icons/hi"
 import { HiBell } from "react-icons/hi"
 import Link from 'next/link'
+import useAuth from '@/hooks/useAuth'
 
 function Header() {
     const [ isScrolled, setIsScrolled ] = useState(false)
+    const { logout } = useAuth()
+
 
     useEffect(()=> {
         const handleScroll = () => {
@@ -22,7 +25,7 @@ function Header() {
     },[])
     
     return (
-        <header className={`${isScrolled && "bg-[#141414]"} transition duration-200`}>
+        <header className={`${isScrolled && "bg-[#141414]"} transition duration-200 z-30`}>
             {/* Left Section */}
             <div className='flex items-center space-x-2 md:space-x-10'>
                 <Logo />
@@ -39,9 +42,14 @@ function Header() {
                 <HiSearch className='hidden sm:inline h-6 w-6'/>
                 <p className='hidden lg:inline'>Kids</p>
                 <HiBell className='h-6 w-6' />
-                <Link href="/account">
-                    <img src="./defaultAvatar.png" alt=""/>
-                </Link>
+                {/* <Link href="/account"> */}
+                    <img 
+                        className='cursor-pointer rounded'
+                        src="./defaultAvatar.png" 
+                        alt=""
+                        onClick={logout}
+                    />
+                {/* </Link> */}
             </div>
         </header>
     )
