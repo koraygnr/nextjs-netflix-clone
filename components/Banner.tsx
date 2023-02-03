@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import Image from 'next/image'
 import { Movie } from '@/types/types'
 import { baseUrl } from '@/constans/movie'
 import Button from './Button'
 import { FaPlay } from "react-icons/fa"
 import { HiInformationCircle } from "react-icons/hi"
+import ModalContext from '@/contexts/ModalContext'
 
 interface IProps {
   netflixOriginals: Movie[]
@@ -12,11 +13,17 @@ interface IProps {
 
 function Banner({ netflixOriginals }: IProps) {
   const [movie, setMovie] = useState<Movie | null>(null)
-  
+  const { setShowModal, setCurrentMovie } = useContext(ModalContext)
+
   useEffect(() => {
     setMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)])
   }, [netflixOriginals])
    
+  const handleClickMore = () => {
+    setShowModal(true)
+    setCurrentMovie(movie)
+  }
+
   return (
     <div className='flex flex-col space-y-4 py-16 transition-all lg:h-[65vh] lg:justify-end lg:pb-12'>
       <div className='absolute top-0 left-0 h-[95vh] w-full -z-10'>
@@ -37,7 +44,10 @@ function Banner({ netflixOriginals }: IProps) {
             <FaPlay className='md:h-7 md:w-7'/>
             <span>Play</span>
           </Button>
-          <Button className='bg-[gray]/70 text-white'>
+          <Button 
+            className='bg-[gray]/70 text-white'
+            onClick={handleClickMore}
+          >
             <p>More Info</p>
             <HiInformationCircle className='h-5 w-5 md:h-7 md:w-7'/>
           </Button>
