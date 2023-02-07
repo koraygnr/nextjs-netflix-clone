@@ -5,6 +5,7 @@ Nextjs, Typescript ve Firebase Authentication/Firestore Database bilgilerimi pek
 #### Kullanılan teknolojiler :
 - React / Nextjs
 - Firebase / Firestore
+- Context api
 - Tailwindcss
 - react-hook-form
 - react-hot-toast
@@ -12,6 +13,8 @@ Nextjs, Typescript ve Firebase Authentication/Firestore Database bilgilerimi pek
 - react-player
 - class-variance-authority
 
+
+Demo -> https://nextjs-netflix-clone-git-main-koraygnr.vercel.app/
 Demo -> https://nextjs-netflix-clone-weld.vercel.app/
 
 ![Önizleme](./assets/more.gif)
